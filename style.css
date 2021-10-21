@@ -1,0 +1,57 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: blanchedalmond;
+}
+main {
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  background-color: #FFF0F0;
+}
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+}
+li {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin: 3px;
+  padding: 3px;
+}
+
+a{
+  text-decoration: none;
+}
+article {
+  padding: 5px;
+}
+#termekek {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 20px;
+}
+div {
+  padding: 5px;
+}
+#termek,
+span {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  background-color: white;
+}
+img {
+  width: 100px;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+span {
+  float: right;
+  margin: 3px;
+}
