@@ -1,12 +1,16 @@
 $(function () {
   const termekek = [];
   let fajlnev = "termekek.json";
-  const kosar = new Kosar();
   getAjax(fajlnev, termekek, kiir);
 
-  $(window).on("kosarba", (event) => {
-  kosar.setKosar(event.detail);
-    
+  $(window).on("modositas", (event) => {
+    console.log("modositas");
+    console.log(event.detail);
+  });
+
+  $(window).on("torles", (event) => {
+    console.log("torles");
+    console.log(event.detail);
   });
 
   function getAjax(fajlnev, tomb, myCallback) {
@@ -26,7 +30,7 @@ $(function () {
     const sablonElem = $(".termek");
     tomb.forEach(function (tombelem) {
       let ujElem = sablonElem.clone().appendTo(szuloElem);
-      let termek = new TermekVasarlo(ujElem, tombelem);
+      let termek = new TermekAdmin(ujElem, tombelem);
     });
     sablonElem.remove();
   }
