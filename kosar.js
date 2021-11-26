@@ -5,8 +5,10 @@ class Kosar {
     this.kosarTomb = [];
 
     //kiolvasás localstorage-ból
-    this.kosarTomb = JSON.parse(localStorage.getItem("kosartomb"));
-    this.megjelenit();
+    if (localStorage.getItem("kosartomb") != null) {
+      this.kosarTomb = JSON.parse(localStorage.getItem("kosartomb"));
+      this.megjelenit();
+    }
 
     this.kosarElem.on("click", ".torol", (event) => {
       let id = $(event.target).attr("data-id");

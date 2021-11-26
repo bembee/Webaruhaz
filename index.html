@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="hu">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="kosar.js"></script>
+    <script src="ajax.js"></script>
     <script src="script.js"></script>
     <script src="termekek.js"></script>
     <title>Simon Gergely</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <nav>
-            <ul>
-                <li><a href="index.html">Kezdőlap</a></li>
-                <li><a href="fizetes.html">Fizetés</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-        <article>
-            <section class="termekek">
-                <div class="termek">
-                <h3 class="termeknev">a</h3>
-                <img src="kepek/kep_2.jpeg" alt="" class="kep" />
-                <p class="leiras"></p>
-                <button class="kosarba">Kosárba</button>
-                <span class="ar"></span>
-                </div>
-            </section>
-            <section class="kosar">
-                <h3>A kosár tartalma</h3>
-                <div id="kosaram"></div>
-                <span id="osszar"> </span>
-                <a href="fizetes.html">
-                    <button class="fizet">Tovább a fizetéshez...</button>
-                </a>
-            </section>
-
-        </article>
-        <footer></footer>
+      <nav>
+        <ul>
+          <li><a href="index.html">Kezdőlap</a></li>
+          <li><a href="fizetes.html">Fizetés</a></li>
+          <li><a href="admin.html">Admin</a></li>
+        </ul>
+      </nav>
+      <article>
+        <form>
+          <label for="kereses">Keresés</label>
+          <input type="text" name="kereses" id="kereses" />
+        </form>
+        <br>
+        <section class="sablon">
+          <div class="termek">
+            <h3 class="termeknev">a</h3>
+            <img src="kepek/kep_2.jpeg" alt="" class="kep" />
+            <p class="leiras"></p>
+            <button class="kosarba">Kosárba</button>
+            <span class="ar"></span>
+          </div>
+        </section>
+        <section class="termekek"></section>
+        <section class="kosar">
+          <h3>A kosár tartalma</h3>
+          <div id="kosaram"></div>
+          <span id="osszar"> </span>
+          <a href="fizetes.html">
+            <button class="fizet">Tovább a fizetéshez...</button>
+          </a>
+        </section>
+      </article>
+      <footer></footer>
     </main>
-</body>
-
+  </body>
 </html>

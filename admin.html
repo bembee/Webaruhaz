@@ -1,56 +1,81 @@
 <!DOCTYPE html>
 <html lang="hu">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="admin.js"></script>
+    <script src="ajax.js"></script>
     <script src="termekek.js"></script>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin.css" />
     <title>Simon Gergely</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <nav>
-            <ul>
-                <li><a href="index.html">Kezdőlap</a></li>
-                <li><a href="fizetes.html">Fizetés</a></li>
-                <li><a href="admin.html">Admin</a></li>
-            </ul>
-        </nav>
-        <article>
-            <section>
-                <table class="termekek">
-                    <tr>
-                        <th>Termék neve</th>
-                        <th>Kép</th>
-                        <th>Leírás</th>
-                        <th>Ár</th>
-                        <th></th>
-                    </tr>
-                    <tr class="termek">
-                        <td class="termeknev"></td>
-                        <td class="kep">
-                            <img src="kepek/kep_1.jpeg" alt="" />
-                        </td>
-                        <td class="leiras"></td>
-                        <td class="ar"></td>
-                        <td>
-                            <button class="torol">Töröl</button>
-                            <button class="modosit">Módosít</button>
-                        </td>
-                    </tr>
-                </table>
-            </section>
-        </article>
-        <footer>
-
-        </footer>
+      <nav>
+        <ul>
+          <li><a href="index.html">Kezdőlap</a></li>
+          <li><a href="fizetes.html">Fizetés</a></li>
+          <li><a href="admin.html">Admin</a></li>
+        </ul>
+      </nav>
+      <article>
+        <section>
+          <table class="termekek">
+            <tr>
+              <th>Termék neve</th>
+              <th>Kép</th>
+              <th>Leírás</th>
+              <th>Ár</th>
+              <th></th>
+            </tr>
+            <tr class="termek">
+              <td class="termeknev"></td>
+              <td class="kep">
+                <img src="kepek/kep_1.jpeg" alt="" />
+              </td>
+              <td class="leiras"></td>
+              <td class="ar"></td>
+              <td>
+                <button class="torol">Töröl</button>
+                <button class="modosit">Módosít</button>
+              </td>
+            </tr>
+          </table>
+          <form>
+            <fieldset>
+              <legend>Termék módosítás</legend>
+              <div>
+                <label for="termeknev">Termék neve</label>
+                <input type="text" name="termeknev" id="termeknev" /><br />
+              </div>
+              <div>
+                <label for="kep">Kép</label>
+                <input type="file" name="kep" id="kep" /><br />
+              </div>
+              <div>
+                <label for="leiras">Leírás</label>
+                <textarea name="leiras" id="leiras"></textarea>
+              </div>
+              <div>
+                <label for="ar">Ár</label>
+                <input
+                  type="text"
+                  name="ar"
+                  id="ar"
+                  title="Csak számok"
+                /><br />
+              </div>
+              <input type="button" id="ujElem" value="Új elem létrehozása" />
+              <input type="button" id="ment" value="Ment" />
+            </fieldset>
+          </form>
+        </section>
+      </article>
+      <footer></footer>
     </main>
-</body>
-
+  </body>
 </html>

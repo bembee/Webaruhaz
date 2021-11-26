@@ -1,29 +1,8 @@
 $(function () {
-  const termekek = [];
-  let fajlnev = "termekek.json";
-  getAjax(fajlnev, termekek, kiir);
-
-  $(window).on("modositas", (event) => {
-    console.log("modositas");
-    console.log(event.detail);
-  });
-
-  $(window).on("torles", (event) => {
-    console.log("torles");
-    console.log(event.detail);
-  });
-
-  function getAjax(fajlnev, tomb, myCallback) {
-    $.ajax({
-      url: fajlnev,
-      success: function (result) {
-        result.termek.forEach((element) => {
-          tomb.push(element);
-        });
-        myCallback(tomb);
-      },
-    });
-  }
+  let apiVegpont = "http://localhost:3000/termekek";
+  const ajaxHiv = new ajaxHivas();
+  ajaxHiv.getAjax(apiVegpont, kiir);
+  let termekID = 0;
 
   function kiir(tomb) {
     const szuloElem = $(".termekek");
@@ -34,4 +13,38 @@ $(function () {
     });
     sablonElem.remove();
   }
+
+  $(window).on("modositas", (event) => {
+    termekID = event.detail.id;
+    $("#termeknev").val(event.detail.nev);
+    $("#leiras").val(event.detail.leiras);
+    $("#ar").val(event.detail.ar);
+  });
+
+  $(window).on("torles", (event) => {
+    var id = event.detail.id;
+    ajaxHiv.deleteAjax(apiVegpont, id);
+  });
+
+  $("#ment").on("click", function () {
+    let txt = {
+      nev: $("#termeknev").val(),
+      leiras: $("#leiras").val(),
+      ar: $("#ar").val(),
+      kep: $("#kep").val(),
+    };
+    console.log("teszt");
+    ajaxHiv.putAjax(apiVegpont, termekID, txt);
+  });
+
+  $("#ujElem").on("click", function () {
+    let txt = {
+      nev: $("#termeknev").val(),
+      leiras: $("#leiras").val(),
+      ar: $("#ar").val(),
+      kep: $("#kep").val(),
+    };
+    console.log("teszt");
+    ajaxHiv.postAjax(apiVegpont, txt);
+  });
 });

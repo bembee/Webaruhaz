@@ -8,12 +8,21 @@ class Termek {
   }
 
   setAdat(ertek) {
-    console.log(ertek);
-    this.cimElem.html(ertek.nev);
-    this.kepElem.html("src", ertek.kep);
-    this.leirasElem.html(ertek.leiras);
-    this.arElem.html(ertek.ar);
+    this.adat = ertek;
+    this.cimElem.text(ertek.nev);
+    this.kepElem.attr("src", ertek.kep);
+    this.leirasElem.text(ertek.leiras);
+    this.arElem.text(ertek.ar + " Ft");
   }
+  kattintasTrigger(esemenyneve) {
+
+    let esemeny = new CustomEvent(esemenyneve, {
+
+        detail: this.adat, //ezzel adatokat tudok átadni
+    });
+    window.dispatchEvent(esemeny); // A főablakhoz adom az eseményt,
+    //Az eseményt majd a script.js-ben el tudom kapni.
+}
 }
 
 class TermekVasarlo extends Termek {
@@ -23,14 +32,8 @@ class TermekVasarlo extends Termek {
     this.kosarbaElem = this.elem.children(".kosarba");
     this.setAdat(this.adat);
     this.kosarbaElem.on("click", () => {
-      this.kattintasTrigger();
+      this.kattintasTrigger("termekKosarba");
     });
-  }
-  kattintasTrigger() {
-    let esemeny = new CustomEvent("kosarba", {
-      detail: this.adat,
-    });
-    window.dispatchEvent(esemeny);
   }
 }
 
@@ -41,23 +44,12 @@ class TermekAdmin extends Termek {
     this.setAdat(this.adat);
     this.torlesElem = this.elem.children("td").children(".torol");
     this.modositElem = this.elem.children("td").children(".modosit");
+    this.meglevoModositElem = $("#ment");
     this.torlesElem.on("click", () => {
-      this.torolTrigger();
+      this.kattintasTrigger("torles");
     });
     this.modositElem.on("click", () => {
-      this.modositTrigger();
+      this.kattintasTrigger("modositas");
     });
-  }
-  torolTrigger() {
-    let esemeny = new CustomEvent("torles", {
-      detail: this.adat,
-    });
-    window.dispatchEvent(esemeny);
-  }
-  modositTrigger() {
-    let esemeny = new CustomEvent("modositas", {
-      detail: this.adat,
-    });
-    window.dispatchEvent(esemeny);
   }
 }
