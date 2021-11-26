@@ -1,33 +1,30 @@
 $(function () {
-  const termekek = [];
-  let fajlnev = "termekek.json";
   const kosar = new Kosar();
-  getAjax(fajlnev, termekek, kiir);
 
-  $(window).on("kosarba", (event) => {
-  kosar.setKosar(event.detail);
-    
-  });
+  let apiVegpont = "http://localhost:3000/termekek";
+  const ajaxHiv = new ajaxHivas();
+  ajaxHiv.getAjax(apiVegpont, termekLista);
 
-  function getAjax(fajlnev, tomb, myCallback) {
-    $.ajax({
-      url: fajlnev,
-      success: function (result) {
-        result.termek.forEach((element) => {
-          tomb.push(element);
-        });
-        myCallback(tomb);
-      },
-    });
-  }
-
-  function kiir(tomb) {
+  function termekLista(termekek) {
     const szuloElem = $(".termekek");
-    const sablonElem = $(".termek");
-    tomb.forEach(function (tombelem) {
-      let ujElem = sablonElem.clone().appendTo(szuloElem);
-      let termek = new TermekVasarlo(ujElem, tombelem);
+    const sablonElem = $(".sablon .termek");
+    szuloElem.empty();
+    sablonElem.show();
+    termekek.forEach(function (elem) {
+      let node = sablonElem.clone().appendTo(szuloElem);
+      const obj = new TermekVasarlo(node, elem);
     });
-    sablonElem.remove();
+    sablonElem.hide();
   }
+
+  $("#kereses").on("keyup", function () {
+    adat = $("#kereses").val();
+    ajaxHiv.getAjax(
+      "http://localhost:3000/termekek" + "?q=" + adat,
+      termekLista
+    );
+  });
+    $(window).on("termekKosarba", (event) => {
+    kosar.setKosar(event.detail);
+  });
 });
